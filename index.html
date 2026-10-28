@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaika Arshad | Web Developer & Data Analytics Specialist</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        },
+                        accent: {
+                            500: '#ec4899',
+                            600: '#db2777',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="mesh-background text-slate-800 dark:text-slate-100 transition-colors duration-300 relative min-h-screen selection:bg-indigo-500 selection:text-white">
+
+    <!-- Scroll Progress Indicator Bar -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 z-50 transition-all duration-150 w-0"></div>
+
+    <!-- 1. NAVIGATION BAR -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-3.5 glass-nav border-b border-slate-200/50 dark:border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center space-x-2.5 text-xl font-bold tracking-tight">
+                <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 text-white flex items-center justify-center font-extrabold text-lg shadow-md shadow-indigo-500/30">MA</span>
+                <span class="text-slate-900 dark:text-white font-extrabold text-lg sm:text-xl">Malaika<span class="text-indigo-600 dark:text-indigo-400">Arshad.</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#hero" class="text-slate-700 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Home</a>
+                <a href="#about" class="text-slate-700 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">About</a>
+                <a href="#skills" class="text-slate-700 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Skills</a>
+                <a href="#projects" class="text-slate-700 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Projects</a>
+                <a href="#contact" class="text-slate-700 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Action Controls & Mobile Menu Button -->
+            <div class="flex items-center space-x-3">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" aria-label="Toggle Dark Mode" class="p-2.5 rounded-xl bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700/80 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm">
+                    <i id="theme-toggle-dark-icon" class="fas fa-moon hidden text-lg"></i>
+                    <i id="theme-toggle-light-icon" class="fas fa-sun hidden text-lg text-amber-400"></i>
+                </button>
+
+                <!-- Download CV CTA -->
+                <a href="assets/CV%20Malaika%20Arshad.pdf" download="CV Malaika Arshad.pdf" class="hidden sm:inline-flex items-center justify-center px-4.5 py-2 text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-xl active:scale-95 transition-all shadow-md shadow-indigo-500/25">
+                    <i class="fas fa-download mr-2 text-xs"></i> Download CV
+                </a>
+
+                <!-- Mobile Hamburger Toggle -->
+                <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="md:hidden p-2.5 rounded-xl text-slate-700 dark:text-slate-300 bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-3 pb-6 border-t border-slate-200/50 dark:border-slate-800/50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md">
+            <div class="flex flex-col space-y-3 pt-2 font-medium">
+                <a href="#hero" class="mobile-nav-link px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800">Home</a>
+                <a href="#about" class="mobile-nav-link px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800">About</a>
+                <a href="#skills" class="mobile-nav-link px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800">Skills</a>
+                <a href="#projects" class="mobile-nav-link px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800">Projects</a>
+                <a href="#contact" class="mobile-nav-link px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-800">Contact</a>
+                <a href="assets/CV%20Malaika%20Arshad.pdf" download="CV Malaika Arshad.pdf" class="block text-center w-full mt-2 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm shadow-md">
+                    <i class="fas fa-download mr-2 text-xs"></i> Download CV
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="pt-20">
+
+        <!-- 2. HERO SECTION -->
+        <section id="hero" class="min-h-[90vh] flex items-center justify-center relative overflow-hidden py-16 lg:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                    <!-- Left Hero Text -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border border-indigo-200/80 dark:border-indigo-800/80 text-indigo-700 dark:text-indigo-300 font-semibold text-xs sm:text-sm shadow-sm">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                            <span>D4WEE Trainee at GCWUF</span>
+                        </div>
+
+                        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                            Hi, I'm <span class="text-gradient">Malaika Arshad</span>
+                        </h1>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-700 dark:text-slate-300">
+                            Web Developer & Data Analytics Student
+                        </h2>
+
+                        <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                            Building clean, responsive web solutions and analyzing complex data sets. Enrolled in Tier 2 Web Development & Data Analytics under UN Women & Karvan collaboration at Government College Women University Faisalabad.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#projects" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-center shadow-lg shadow-indigo-500/30 hover:-translate-y-0.5 transition-all">
+                                Explore Projects <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                            <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl glass-card hover:bg-white dark:hover:bg-slate-800 text-slate-900 dark:text-white font-bold text-center border border-slate-300/80 dark:border-slate-700 hover:-translate-y-0.5 transition-all">
+                                Get In Touch
+                            </a>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="pt-4 flex items-center justify-center lg:justify-start space-x-4">
+                            <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub" class="p-3.5 rounded-2xl glass-card hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-110 transition-all text-slate-700 dark:text-slate-300">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="p-3.5 rounded-2xl glass-card hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-110 transition-all text-slate-700 dark:text-slate-300">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                            <a href="mailto:malaika.arshad@example.com" aria-label="Email" class="p-3.5 rounded-2xl glass-card hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-110 transition-all text-slate-700 dark:text-slate-300">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Profile Floating Card -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-72 h-72 sm:w-88 sm:h-88 lg:w-96 lg:h-96 animate-float">
+                            <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 rotate-6 blur-xl opacity-60"></div>
+
+                            <div class="relative w-full h-full rounded-3xl overflow-hidden glass-card border-2 border-white/60 dark:border-slate-700/60 p-6 flex flex-col items-center justify-center text-center shadow-2xl">
+                                <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-tr from-indigo-600 to-pink-500 p-1 shadow-xl mb-4">
+                                    <img src="assets/profile.jpg" onerror="this.onerror=null; this.src='assets/profile.jpeg';" alt="Malaika Arshad" class="w-full h-full rounded-full object-cover object-top bg-slate-900">
+                                </div>
+                                <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">Malaika Arshad</h3>
+                                <p class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 mt-1 uppercase tracking-wider">Web Dev & Data Analytics</p>
+                                <span class="mt-3 px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 text-xs font-medium">GCWUF Student</span>
+                            </div>
+
+                            <!-- Floating Badge -->
+                            <div class="absolute -bottom-4 -left-4 glass-card px-4 py-3 rounded-2xl shadow-xl flex items-center space-x-3 border border-white/80 dark:border-slate-700">
+                                <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-md">
+                                    <i class="fas fa-certificate"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="text-[10px] uppercase font-bold text-slate-400">Collaborative Program</p>
+                                    <p class="text-xs font-bold text-slate-900 dark:text-white">UN Women & Karvan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ABOUT ME SECTION -->
+        <section id="about" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs sm:text-sm font-extrabold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-2">Academic & Personal Profile</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">About Malaika Arshad</h3>
+                    <div class="w-16 h-1 bg-gradient-to-r from-indigo-600 to-pink-600 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="glass-card p-8 rounded-3xl space-y-4">
+                            <h4 class="text-2xl font-bold text-slate-900 dark:text-white">
+                                Bridging Web Technology & Data Analytics
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                                Hello! I am <strong>Malaika Arshad</strong>, a dedicated student at Government College Women University Faisalabad (GCWUF), enrolled in the <strong>Web Development & Data Analytics (Tier 2)</strong> training program offered under the <strong>D4WEE initiative</strong> in collaboration with <strong>UN Women & Karvan</strong>.
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                                My focus lies in developing clean, responsive front-end applications while using data analytics to extract actionable insights. Through practical hands-on assignments, I translate visual designs into functional web pages.
+                            </p>
+                        </div>
+
+                        <!-- Highlights Grid -->
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="glass-card p-5 rounded-2xl text-center card-hover">
+                                <span class="block text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">100%</span>
+                                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1 block">Manual Code</span>
+                            </div>
+                            <div class="glass-card p-5 rounded-2xl text-center card-hover">
+                                <span class="block text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">Tier 2</span>
+                                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1 block">Course Track</span>
+                            </div>
+                            <div class="glass-card p-5 rounded-2xl text-center card-hover">
+                                <span class="block text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">GCWUF</span>
+                                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1 block">Institution</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Details Card -->
+                    <div class="lg:col-span-5">
+                        <div class="glass-card p-8 rounded-3xl space-y-4 shadow-xl">
+                            <h5 class="text-xl font-extrabold text-slate-900 dark:text-white pb-3 border-b border-slate-200 dark:border-slate-700/60 flex items-center justify-between">
+                                <span>Academic Info</span>
+                                <i class="fas fa-university text-indigo-500"></i>
+                            </h5>
+                            <div class="space-y-3.5 text-sm">
+                                <div class="flex justify-between items-center py-1">
+                                    <span class="text-slate-500 dark:text-slate-400 font-medium">Student Name:</span>
+                                    <span class="font-bold text-slate-900 dark:text-white">Malaika Arshad</span>
+                                </div>
+                                <div class="flex justify-between items-center py-1">
+                                    <span class="text-slate-500 dark:text-slate-400 font-medium">University:</span>
+                                    <span class="font-bold text-slate-900 dark:text-white">GCWUF</span>
+                                </div>
+                                <div class="flex justify-between items-center py-1">
+                                    <span class="text-slate-500 dark:text-slate-400 font-medium">Location:</span>
+                                    <span class="font-bold text-slate-900 dark:text-white">Faisalabad, Pakistan</span>
+                                </div>
+                                <div class="flex justify-between items-center py-1">
+                                    <span class="text-slate-500 dark:text-slate-400 font-medium">Course:</span>
+                                    <span class="font-bold text-indigo-600 dark:text-indigo-400">Web Dev & Data Analytics</span>
+                                </div>
+                                <div class="flex justify-between items-center py-1">
+                                    <span class="text-slate-500 dark:text-slate-400 font-medium">Partners:</span>
+                                    <span class="font-bold text-slate-900 dark:text-white">UN Women & Karvan</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. SKILLS SECTION -->
+        <section id="skills" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs sm:text-sm font-extrabold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-2">Technical Toolkit</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Skills & Competencies</h3>
+                    <div class="w-16 h-1 bg-gradient-to-r from-indigo-600 to-pink-600 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <div class="glass-card p-7 rounded-3xl card-hover space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-orange-100 dark:bg-orange-950/60 text-orange-600 flex items-center justify-center text-3xl shadow-md">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <h4 class="font-extrabold text-xl text-slate-900 dark:text-white">HTML5 & CSS3</h4>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Semantic HTML structures, flexbox, grid layouts, responsive media queries, and modern CSS styling.</p>
+                    </div>
+
+                    <div class="glass-card p-7 rounded-3xl card-hover space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-100 dark:bg-amber-950/60 text-amber-500 flex items-center justify-center text-3xl shadow-md">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <h4 class="font-extrabold text-xl text-slate-900 dark:text-white">JavaScript</h4>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">DOM manipulation, dynamic user interactions, event listeners, and form validations.</p>
+                    </div>
+
+                    <div class="glass-card p-7 rounded-3xl card-hover space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-red-100 dark:bg-red-950/60 text-red-600 flex items-center justify-center text-3xl shadow-md">
+                            <i class="fab fa-git-alt"></i>
+                        </div>
+                        <h4 class="font-extrabold text-xl text-slate-900 dark:text-white">Git & GitHub</h4>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Version control tracking, commit history, branch management, and GitHub Pages deployment.</p>
+                    </div>
+
+                    <div class="glass-card p-7 rounded-3xl card-hover space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 flex items-center justify-center text-3xl shadow-md">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="font-extrabold text-xl text-slate-900 dark:text-white">Data Analytics</h4>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Data cleaning techniques, statistical analysis, trend identification, and summary reports.</p>
+                    </div>
+
+                    <div class="glass-card p-7 rounded-3xl card-hover space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 flex items-center justify-center text-3xl shadow-md">
+                            <i class="fas fa-file-excel"></i>
+                        </div>
+                        <h4 class="font-extrabold text-xl text-slate-900 dark:text-white">Google Sheets</h4>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Spreadsheet formulas, pivot tables, chart visualizers, and dataset management.</p>
+                    </div>
+
+                    <div class="glass-card p-7 rounded-3xl card-hover space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-pink-100 dark:bg-pink-950/60 text-pink-600 flex items-center justify-center text-3xl shadow-md">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                        <h4 class="font-extrabold text-xl text-slate-900 dark:text-white">Figma UI/UX</h4>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Wireframing, screen prototyping, layout grids, auto layout components, and visual hierarchy.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. PROJECTS SECTION -->
+        <section id="projects" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs sm:text-sm font-extrabold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-2">Practical Showcase</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Featured Projects</h3>
+                    <div class="w-16 h-1 bg-gradient-to-r from-indigo-600 to-pink-600 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap justify-center gap-3 mb-12">
+                    <button onclick="filterProjects('all')" class="project-filter-btn px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-500/20" data-filter="all">All Projects</button>
+                    <button onclick="filterProjects('web')" class="project-filter-btn px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all glass-card text-slate-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-800" data-filter="web">Web Apps</button>
+                    <button onclick="filterProjects('data')" class="project-filter-btn px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all glass-card text-slate-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-800" data-filter="data">Data Analytics</button>
+                    <button onclick="filterProjects('ui')" class="project-filter-btn px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all glass-card text-slate-700 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-slate-800" data-filter="ui">UI/UX Design</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <!-- Project 1 -->
+                    <div class="project-card-item web glass-card rounded-3xl overflow-hidden card-hover flex flex-col justify-between" data-category="web">
+                        <div>
+                            <div class="h-48 overflow-hidden relative bg-slate-200 dark:bg-slate-800">
+                                <img src="assets/project1.png" alt="Project 1 screenshot" class="w-full h-full object-cover object-top">
+                                <span class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-white">Web Dev</span>
+                            </div>
+                            <div class="p-6 space-y-3">
+                                <h4 class="text-xl font-extrabold text-slate-900 dark:text-white">Responsive Product Landing Page</h4>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Modern single-page layout crafted using semantic HTML5 and flexbox/grid CSS layout techniques.</p>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 flex items-center justify-between border-t border-slate-200/50 dark:border-slate-700/50 mt-4">
+                            <button onclick="openModal(1)" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline">View Details <i class="fas fa-arrow-right ml-1"></i></button>
+                            <div class="flex space-x-3 text-slate-500">
+                                <a href="https://github.com" target="_blank" aria-label="Github Repo"><i class="fab fa-github hover:text-indigo-600"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card-item data glass-card rounded-3xl overflow-hidden card-hover flex flex-col justify-between" data-category="data">
+                        <div>
+                            <div class="h-48 overflow-hidden relative bg-slate-200 dark:bg-slate-800">
+                                <img src="assets/project2.png" alt="Project 2 screenshot" class="w-full h-full object-cover object-top">
+                                <span class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-white">Data Analytics</span>
+                            </div>
+                            <div class="p-6 space-y-3">
+                                <h4 class="text-xl font-extrabold text-slate-900 dark:text-white">Exploratory Data Dashboard</h4>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Interactive dataset analysis performed using Google Sheets formulas, pivot tables, and chart visualizers.</p>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 flex items-center justify-between border-t border-slate-200/50 dark:border-slate-700/50 mt-4">
+                            <button onclick="openModal(2)" class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline">View Details <i class="fas fa-arrow-right ml-1"></i></button>
+                            <div class="flex space-x-3 text-slate-500">
+                                <a href="https://github.com" target="_blank" aria-label="Github Repo"><i class="fab fa-github hover:text-emerald-600"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card-item web ui glass-card rounded-3xl overflow-hidden card-hover flex flex-col justify-between" data-category="web">
+                        <div>
+                            <div class="h-48 overflow-hidden relative bg-slate-200 dark:bg-slate-800">
+                                <img src="assets/project3.png" alt="Project 3 screenshot" class="w-full h-full object-cover object-top">
+                                <span class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-white">GitHub Pages</span>
+                            </div>
+                            <div class="p-6 space-y-3">
+                                <h4 class="text-xl font-extrabold text-slate-900 dark:text-white">Malaika's Official Portfolio</h4>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Hand-coded portfolio site created for D4WEE GCWUF evaluation and published live via GitHub Pages.</p>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0 flex items-center justify-between border-t border-slate-200/50 dark:border-slate-700/50 mt-4">
+                            <button onclick="openModal(3)" class="text-xs font-bold text-pink-600 dark:text-pink-400 hover:underline">View Details <i class="fas fa-arrow-right ml-1"></i></button>
+                            <div class="flex space-x-3 text-slate-500">
+                                <a href="https://github.com" target="_blank" aria-label="Github Repo"><i class="fab fa-github hover:text-pink-600"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CONTACT SECTION -->
+        <section id="contact" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs sm:text-sm font-extrabold tracking-widest text-indigo-600 dark:text-indigo-400 uppercase mb-2">Get In Touch</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Contact Malaika</h3>
+                    <div class="w-16 h-1 bg-gradient-to-r from-indigo-600 to-pink-600 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+                    <!-- Direct Contact Card -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="glass-card p-6 rounded-3xl flex items-center space-x-4 card-hover">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-slate-400 font-bold uppercase">Direct Email</h4>
+                                <a href="mailto:malaika.arshad@example.com" class="text-base font-bold text-slate-900 dark:text-white hover:text-indigo-600 transition-colors">malaika.arshad@example.com</a>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-3xl flex items-center space-x-4 card-hover">
+                            <div class="w-12 h-12 rounded-2xl bg-pink-600 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-slate-400 font-bold uppercase">Campus Location</h4>
+                                <p class="text-base font-bold text-slate-900 dark:text-white">GCWUF, Faisalabad, Pakistan</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-3xl flex items-center space-x-4 card-hover">
+                            <div class="w-12 h-12 rounded-2xl bg-purple-600 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-slate-400 font-bold uppercase">Training Initiative</h4>
+                                <p class="text-base font-bold text-slate-900 dark:text-white">D4WEE (UN Women & Karvan)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Form -->
+                    <div class="lg:col-span-7">
+                        <div class="glass-card p-8 rounded-3xl shadow-xl">
+
+                            <div id="contact-success" class="hidden mb-6 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-sm">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-circle-check text-base"></i>
+                                    <span class="font-bold">Message Sent Successfully!</span>
+                                </div>
+                                <p class="mt-1 text-xs">Thank you for reaching out. Malaika will reply shortly.</p>
+                            </div>
+
+                            <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-5">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label for="name" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">Your Name *</label>
+                                        <input type="text" id="name" required placeholder="Full Name" class="w-full px-4 py-3.5 rounded-2xl bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm text-slate-900 dark:text-white">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">Your Email *</label>
+                                        <input type="email" id="email" required placeholder="name@example.com" class="w-full px-4 py-3.5 rounded-2xl bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm text-slate-900 dark:text-white">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">Your Message *</label>
+                                    <textarea id="message" rows="4" required placeholder="Type your message here..." class="w-full px-4 py-3.5 rounded-2xl bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm text-slate-900 dark:text-white resize-none"></textarea>
+                                </div>
+                                <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-extrabold text-sm shadow-lg shadow-indigo-500/25 transition-all">
+                                    Send Message <i class="fas fa-paper-plane ml-2 text-xs"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 7. FOOTER -->
+    <footer class="py-8 border-t border-slate-200/60 dark:border-slate-800/60 glass-nav transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <p class="text-xs text-slate-600 dark:text-slate-400">
+                &copy; <span id="year"></span> Malaika Arshad. Developed for D4WEE Training Program — GCWUF (UN Women & Karvan).
+            </p>
+            <a href="#hero" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline">Back to top ↑</a>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE MODAL -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md">
+        <div class="glass-card max-w-lg w-full max-h-[90vh] overflow-y-auto rounded-3xl p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-800 dark:hover:text-white p-2">
+                <i class="fas fa-xmark text-xl"></i>
+            </button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
